@@ -59,6 +59,22 @@ photorealistic room renders:
 export NANOBANANA_MODEL=gemini-3-pro-image-preview
 ```
 
+## Bundled plugin: caveman (token compression)
+
+`.claude/settings.json` in this repo registers the [caveman](https://github.com/juliusbrussee/caveman)
+plugin (third-party, by Julius Brussee) and enables it. It cuts Claude's *output* token
+usage (~65% in the author's benchmarks) via `SessionStart`/`UserPromptSubmit` hooks that
+run automatically on every session.
+
+⚠️ **This is unverified third-party code that runs automatically inside your Claude Code
+environment.** Review [its source](https://github.com/juliusbrussee/caveman) before relying
+on it. To disable it, remove the `enabledPlugins` / `extraKnownMarketplaces` entries from
+`.claude/settings.json`, or set `"caveman@caveman": false` in `.claude/settings.local.json`
+(gitignored, personal override — won't affect teammates).
+
+**To verify it's active:** open Claude Code in this repo and run `/hooks` — you should see
+`caveman` hooks listed under `SessionStart` and `UserPromptSubmit`.
+
 ## Credits & License
 
 Adapted from [cc-nano-banana](https://github.com/kkoppenhaver/cc-nano-banana) by
