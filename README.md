@@ -24,10 +24,13 @@ is checked out, the skill is available automatically — no manual copy step nee
    ```bash
    npm install -g @google/gemini-cli
    ```
-2. **Gemini API key** — get one from [Google AI Studio](https://aistudio.google.com/), then:
+2. **Gemini API key** — get one from [Google AI Studio](https://aistudio.google.com/app/apikey), then set it locally
+   (never commit it — see `.env.example`):
    ```bash
    export GEMINI_API_KEY="your-api-key"
    ```
+   To make it permanent, add that line to your shell profile (`~/.bashrc` or `~/.zshrc`), or copy
+   [`.env.example`](.env.example) to `.env` and fill it in — `.env` is already git-ignored.
 3. **nanobanana extension**
    ```bash
    gemini extensions install https://github.com/gemini-cli-extensions/nanobanana
